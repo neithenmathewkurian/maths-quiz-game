@@ -9,26 +9,30 @@ document.getElementById("player2_score").innerHTML = player2_score;
 document.getElementById("player_question").innerHTML = "question turn - " + player1_name;
 document.getElementById("player_answer").innerHTML = "answer turn - " + player2_name;
 function send() {
-    get_word = document.getElementById("word").value;
-    word = get_word.toLowerCase();
+   number1 = document.getElementById("number1").value;
+   number2 = document.getElementById("number2").value;
+   actual_answer = parseInt(number1)*parseInt(number2)
+   number = get_word.toLowerCase();
+
     // getting secound letter
-    char1 = word.charAt(1);
+    char1 = number.charAt(1);
     lengthby2 = Math.floor(word.length / 2);
-    char2 = word.charAt(lengthby2);
-    lastletter = word.length - 1;
-    char3 = word.charAt(lastletter);
+    char2 = number.charAt(lengthby2);
+    lastletter = number.length - 1;
+    char3 = number.charAt(lastletter);
     console.log(char1);
     console.log(char2);
     console.log(char3);
-    replace1 = word.replace(char1, "_");
+    replace1 = number.replace(char1, "_");
     replace2 = replace1.replace(char2, "_");
     replace3 = replace2.replace(char3, "_");
     console.log(replace3);
-    question = "<h4 id='word_display'>" + replace3 + "</h4>";
+    question = "<h4 id='number_display'>" + replace3 + "</h4>";
     textinput = "<br>answer=<input type='text' id='input_check_box'>";
     button = "<br><br><br><button class='btn btn-success'onclick='check()'>check</button>";
     document.getElementById("output").innerHTML = question + textinput + button;
-    document.getElementById("word").value = "";
+    document.getElementById("number").value = "";
+    
 }
 question_turn = "player1";
 answer_turn = "player2";
