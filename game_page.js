@@ -11,23 +11,9 @@ document.getElementById("player_answer").innerHTML = "answer turn - " + player2_
 function send() {
    number1 = document.getElementById("number1").value;
    number2 = document.getElementById("number2").value;
-   actual_answer = parseInt(number1)*parseInt(number2)
-   number = get_word.toLowerCase();
-
-    // getting secound letter
-    char1 = number.charAt(1);
-    lengthby2 = Math.floor(word.length / 2);
-    char2 = number.charAt(lengthby2);
-    lastletter = number.length - 1;
-    char3 = number.charAt(lastletter);
-    console.log(char1);
-    console.log(char2);
-    console.log(char3);
-    replace1 = number.replace(char1, "_");
-    replace2 = replace1.replace(char2, "_");
-    replace3 = replace2.replace(char3, "_");
-    console.log(replace3);
-    question = "<h4 id='number_display'>" + replace3 + "</h4>";
+   actual_answer = parseInt(number1)*parseInt(number2);
+    console.log(actual_answer);
+    question = "<h4 id='number_display'>" + number1 +" x "+number2+ "</h4>";
     textinput = "<br>answer=<input type='text' id='input_check_box'>";
     button = "<br><br><br><button class='btn btn-success'onclick='check()'>check</button>";
     document.getElementById("output").innerHTML = question + textinput + button;
@@ -38,8 +24,7 @@ question_turn = "player1";
 answer_turn = "player2";
 function check() {
     answer = document.getElementById("input_check_box").value;
-    answer = answer.toLowerCase();
-    if (answer == word) {
+    if (answer == actual_answer) {
         if (answer_turn == "player1") {
                 player1_score=player1_score+1;
                 document.getElementById("player1_score").innerHTML=player1_score;
@@ -52,7 +37,7 @@ function check() {
     }
 document.getElementById("output").innerHTML="";
 if(question_turn=="player1"){
-    question_turn="player2";
+    answer_turn="player2";
     document.getElementById("player_question").innerHTML="question turn  =  "+player2_name;
 }
 else{
